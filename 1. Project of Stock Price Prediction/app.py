@@ -225,6 +225,22 @@ def index():
         plots['boxplot'] = base64.b64encode(buf.getvalue()).decode('utf-8')
         plt.close()
 
+        # Plot actual vs predicted values for rolling mean
+        plt.figure(figsize=(10, 5))
+        plt.plot(test.reset_index(drop=True), label='Actual')
+        plt.plot(test_pred.reset_index(drop=True), label='Predicted')
+        plt.legend(['Actual', 'Predicted'])
+        plt.title('Actual vs Predicted Values (Rolling Mean)')
+        plt.xlabel('Time Steps')
+        plt.ylabel('Values')
+        buf = BytesIO()
+        plt.savefig(buf, format='png')
+        buf.seek(0)
+        plots['rolling_mean'] = base64.b64encode(buf.getvalue()).decode('utf-8')
+        plt.close()
+
+
+
     except Exception as e:
         print(f"Error: {e}")
 
@@ -240,9 +256,9 @@ def index():
         'candle': 'This candlestick chart visualizes the stock price movements, including open, high, low, and close prices.',
         'last_100_candle': 'This candlestick chart focuses on the last 100 data points for detailed price movement analysis.',
         'boxplot': 'This boxplot provides a summary of closing prices, highlighting median, quartiles, and potential outliers.',
-    }
+    }   
 
-    return render_template('data.html', plots=plots, descriptions=descriptions, first_data=first_data, rmse=rmse, mape=mape)
+    return render_template('data.html', loss_plot=loss_plot, plots=plots, descriptions=descriptions, first_data=first_data, rmse=rmse, mape=mape)
 
 if __name__ == '__main__':
     app.run(debug=True)
