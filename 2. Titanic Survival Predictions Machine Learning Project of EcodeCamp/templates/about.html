@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>About Us</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        h1, h2 {
+            color: #343a40;
+        }
+        .container {
+            flex: 1;
+            padding-bottom: 60px; /* Space for footer */
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            position: relative; /* Allow the footer to be static */
+            bottom: 0;
+            width: 100%;
+        }
+        .step {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+<!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Titanic Analysis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('portfolio') }}">Portfolio</a> <!-- New link to Portfolio -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+        <!-- Projects Section -->
+        <section class="container">
+            <h2><center>Titanic Survival Prediction</center></h2>
+            <div class="project">
+                <p>Analyzed the Titanic dataset to predict passenger survival rates using various machine learning algorithms.</p>
+                <img src="static\titanic-project-image.JPG" alt="Titanic Survival Prediction">
+            </div>
+            <!-- Add more projects as needed -->
+        </section>
+
+    <!-- Content -->
+    <div class="container mt-5">
+        <h1>About This Project</h1>
+        <p>This project analyzes the Titanic dataset to predict passenger survival based on various features using machine learning algorithms.</p>
+        <p>We have implemented several models, including Logistic Regression, Decision Tree, Random Forest, and Gradient Boosting Classifier, to evaluate their performance on the dataset.</p>
+
+        <h2>Titanic Dataset Overview</h2>
+        <p>The Titanic dataset contains information about the passengers aboard the RMS Titanic, which sank on its maiden voyage in April 1912. The goal is to predict whether a passenger survived based on various features. The dataset includes the following columns:</p>
+        <ul>
+            <li><strong>PassengerId</strong>: Unique identifier for each passenger.</li>
+            <li><strong>Survived</strong>: Indicates whether the passenger survived (1) or not (0).</li>
+            <li><strong>Pclass</strong>: Class of the ticket (1st, 2nd, or 3rd class).</li>
+            <li><strong>Name</strong>: Name of the passenger.</li>
+            <li><strong>Sex</strong>: Gender of the passenger (male or female).</li>
+            <li><strong>Age</strong>: Age of the passenger in years.</li>
+            <li><strong>SibSp</strong>: Number of siblings or spouses aboard the Titanic.</li>
+            <li><strong>Parch</strong>: Number of parents or children aboard the Titanic.</li>
+            <li><strong>Ticket</strong>: Ticket number.</li>
+            <li><strong>Fare</strong>: Fare paid by the passenger.</li>
+            <li><strong>Cabin</strong>: Cabin number.</li>
+            <li><strong>Embarked</strong>: Port of embarkation (C = Cherbourg; Q = Queenstown; S = Southampton).</li>
+        </ul>
+
+        <h2>Using the Titanic Dataset: Step-by-Step</h2>
+        <div class="step">
+            <h3>1. Load the Dataset</h3>
+            <p>Load the dataset using libraries like <code>pandas</code> in Python.</p>
+        </div>
+        <div class="step">
+            <h3>2. Explore the Data</h3>
+            <p>Get an overview of the dataset by checking its shape, data types, and a few rows.</p>
+        </div>
+        <div class="step">
+            <h3>3. Preprocess the Data</h3>
+            <p>Handle missing values and convert categorical variables to numerical ones.</p>
+        </div>
+        <div class="step">
+            <h3>4. Split the Data</h3>
+            <p>Separate the dataset into features (X) and target (y), then split it into training and test sets.</p>
+        </div>
+        <div class="step">
+            <h3>5. Choose a Model</h3>
+            <p>Select a machine learning model to train.</p>
+        </div>
+        <div class="step">
+            <h3>6. Train the Model</h3>
+            <p>Fit the model to the training data.</p>
+        </div>
+        <div class="step">
+            <h3>7. Make Predictions</h3>
+            <p>Use the trained model to make predictions on the test set.</p>
+        </div>
+        <div class="step">
+            <h3>8. Evaluate the Model</h3>
+            <p>Assess the model's performance using metrics like accuracy and precision.</p>
+        </div>
+        <div class="step">
+            <h3>9. Visualize the Results (Optional)</h3>
+            <p>Create visualizations to understand the results better.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; Muhammad Arslan Qureshi. 2024 All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.11/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
