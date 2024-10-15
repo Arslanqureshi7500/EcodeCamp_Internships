@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Your Portfolio</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        h1, h2 {
+            color: #343a40;
+        }
+        .navbar {
+            margin-bottom: 30px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+        .project {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .project img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .skill {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">My Titanic Analysis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('portfolio') }}">Portfolio</a> <!-- New link to Portfolio -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+        <!-- Portfolio Image Section -->
+        <section class="container">
+            <h2>Muhammad Arslan Qureshi</h2>
+            <div class="project">
+                <img src="static\1.png" alt="Titanic Survival Prediction">
+            </div>
+        </section>
+    
+
+    <!-- About Me Section -->
+    <section id="about" class="container">
+        <p>I'm Muhammad Arslan Qureshi, a passionate AI/ML & Data Scientist Enthusiast | Python | EDA | Machine Learning | Deep Learning | NLP | Chatbot 🤖📊💡 with a background in computer science and a strong foundation in data science. I worked on various projects that enhanced my skills in machine learning and data analysis. <br>
+        LinkedIn: <a href="https://www.linkedin.com/in/arslanqureshii/" target="_blank">https://www.linkedin.com/in/arslanqureshii/</a> <br>
+        GitHub: <a href="https://github.com/Arslanqureshi7500/" target="_blank">https://github.com/Arslanqureshi7500/</a> <br>
+        I passed BSIT and am currently pursuing an MS in Data Science from IUB.</p>
+        <b>Email: Arslanqureshi7500@gmail.com</b>
+        <b>Whatsapp: +92307-7600650</b>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2>Skills</h2>
+        <div class="skill"><i class="fas fa-check-circle"></i> Python</div>
+        <div class="skill"><i class="fas fa-check-circle"></i> Machine Learning</div>
+        <div class="skill"><i class="fas fa-check-circle"></i> Data Analysis</div>
+        <div class="skill"><i class="fas fa-check-circle"></i> Flask</div>
+        <div class="skill"><i class="fas fa-check-circle"></i> Streamlit</div>
+        <!-- Add more skills as needed -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; Muhammad Arslan Qureshi. 2024 All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.11/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

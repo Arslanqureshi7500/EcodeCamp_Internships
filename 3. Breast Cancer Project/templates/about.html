@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>About Us</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        h1, h2 {
+            color: #f7f8f8;
+        }
+        .container {
+            flex: 1;
+            padding-bottom: 60px; /* Space for footer */
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            width: 100%;
+        }
+        .step {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Breast Cancer Analysis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('portfolio') }}">Portfolio</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="container">
+        <h2><center>Breast Cancer Diagnosis</center></h2>
+        <div class="project">
+            <p>Analyzed the Breast Cancer Wisconsin (Diagnostic) dataset to predict whether a tumor is malignant or benign using various machine learning algorithms.</p>
+            <img src="static/BC.jpg" alt="Breast Cancer Diagnosis" class="img-fluid">
+        </div>
+        <!-- Add more projects as needed -->
+    </section>
+
+    <!-- Predicted Class Probability -->
+    <div class="container mt-5">
+        <h2>Predicted Class Probability</h2>
+        <p class="plot-description">This bar chart shows the predicted class probability for the last data point.</p>
+        <img src="{{ url_for('static', filename='predicted_class_probability.png') }}" alt="Predicted Class Probability" class="img-fluid">
+    </div>
+
+    <!-- Content -->
+    <div class="container mt-5">
+        <h1>About This Project</h1>
+        <p>This project analyzes the Breast Cancer Wisconsin (Diagnostic) dataset to classify breast tumors as either malignant or benign based on various features extracted from digital images.</p>
+        <p>We have implemented several models, including Logistic Regression, Decision Tree, Random Forest, and Gradient Boosting Classifier, to evaluate their performance on the dataset.</p>
+
+        <h2>Breast Cancer Wisconsin (Diagnostic) Dataset Overview</h2>
+        <p>The Breast Cancer Wisconsin (Diagnostic) dataset is used to predict whether breast cancer tumors are malignant (cancerous) or benign (non-cancerous). The dataset contains the following features:</p>
+        <ul>
+            <li><strong>Radius</strong>: Mean of distances from the center to points on the perimeter.</li>
+            <li><strong>Texture</strong>: Standard deviation of gray-scale values.</li>
+            <li><strong>Perimeter</strong>: Length around the tumor's boundary.</li>
+            <li><strong>Area</strong>: Area size of the tumor.</li>
+            <li><strong>Smoothness</strong>: Local variation in radius lengths.</li>
+            <li><strong>Compactness</strong>: Perimeter² / area - 1.0.</li>
+            <li><strong>Concavity</strong>: Severity of concave portions of the contour.</li>
+            <li><strong>Concave points</strong>: Number of concave portions of the contour.</li>
+            <li><strong>Symmetry</strong>: Symmetry of the tumor's shape.</li>
+            <li><strong>Fractal dimension</strong>: "Coastline approximation"—how detail changes with scale.</li>
+        </ul>
+
+        <h2>Using the Breast Cancer Dataset: Step-by-Step</h2>
+        <div class="step">
+            <h3>1. Load the Dataset</h3>
+            <p>Load the dataset using libraries like <code>pandas</code> in Python.</p>
+        </div>
+        <div class="step">
+            <h3>2. Explore the Data</h3>
+            <p>Get an overview of the dataset by checking its shape, data types, and a few rows.</p>
+        </div>
+        <div class="step">
+            <h3>3. Preprocess the Data</h3>
+            <p>Handle missing values and normalize features for better model performance.</p>
+        </div>
+        <div class="step">
+            <h3>4. Split the Data</h3>
+            <p>Separate the dataset into features (X) and target (y), then split it into training and test sets.</p>
+        </div>
+        <div class="step">
+            <h3>5. Choose a Model</h3>
+            <p>Select a machine learning model to train.</p>
+        </div>
+        <div class="step">
+            <h3>6. Train the Model</h3>
+            <p>Fit the model to the training data.</p>
+        </div>
+        <div class="step">
+            <h3>7. Make Predictions</h3>
+            <p>Use the trained model to make predictions on the test set.</p>
+        </div>
+        <div class="step">
+            <h3>8. Evaluate the Model</h3>
+            <p>Assess the model's performance using metrics like accuracy and precision.</p>
+        </div>
+        <div class="step">
+            <h3>9. Visualize the Results (Optional)</h3>
+            <p>Create visualizations to understand the results better.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; Muhammad Arslan Qureshi. 2024 All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.11/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

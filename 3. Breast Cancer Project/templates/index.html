@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap">
+    <title>Breast Cancer Prediction System</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Soft background color */
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h5 {
+            color: #343a40; /* Darker text color for contrast */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .plot-description {
+            color: #6c757d; /* Lighter text color for descriptions */
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .img-fluid {
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for images */
+        }
+
+        .img-fluid:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: #343a40; /* Dark footer background */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .model-metrics-table th,
+        .model-metrics-table td {
+            vertical-align: middle;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Breast Cancer Prediction</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('portfolio') }}">Portfolio</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1>Breast Cancer Prediction System</h1>
+        <h2>Breast Cancer Dataset Overview</h2>
+        <p class="text-center">Quick preview of the breast cancer dataset:</p>
+        <div class="table-responsive">
+            {{ raw_data_preview | safe }} <!-- Display raw data preview -->
+        </div>
+
+        <!-- Introduction Section -->
+        <h2>Introduction to Breast Cancer Prediction Dataset</h2>
+        <p class="text-justify">
+            Breast cancer is one of the most prevalent cancers worldwide, significantly affecting women's health. Early detection and accurate diagnosis are crucial for effective treatment and improved survival rates. Machine learning (ML) has emerged as a powerful tool for analyzing medical data, offering innovative approaches to diagnosing and predicting breast cancer outcomes.
+        </p>
+        <p class="text-justify">
+            The breast cancer prediction dataset serves as a foundational resource for developing and testing machine learning models aimed at predicting the presence of breast cancer based on various features extracted from medical examinations. This dataset typically contains patient information, tumor characteristics, and other relevant clinical features that allow ML algorithms to learn patterns associated with benign and malignant tumors.
+        </p>
+
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Patient Demographics:</strong> Information such as age, gender, and family history, which can provide context for risk assessment.</li>
+            <li><strong>Tumor Characteristics:</strong> Details about the tumors, including size, shape, texture, margins, and type (benign or malignant).</li>
+            <li><strong>Histological Features:</strong> Microscopic characteristics of cancer cells, often assessed through biopsy samples.</li>
+            <li><strong>Diagnostic Results:</strong> Outcomes from various tests and procedures, including imaging studies and pathology reports.</li>
+            <li><strong>Labels:</strong> The target variable indicating whether the tumor is benign or malignant, typically coded as 0 (benign) and 1 (malignant).</li>
+        </ul>
+
+        <h3>Importance of Machine Learning in Breast Cancer Prediction</h3>
+        <p class="text-justify">
+            Machine learning algorithms can analyze complex datasets and identify intricate patterns that may not be immediately apparent to human observers. By training on historical patient data, ML models can enhance diagnostic accuracy, aid in treatment decisions, and facilitate personalized medicine.
+        </p>
+
+        <h3>Common Machine Learning Algorithms Used</h3>
+        <p class="text-justify">
+            Several machine learning algorithms are commonly applied to the breast cancer prediction dataset, including logistic regression, decision trees, random forest, support vector machines (SVM), and neural networks.
+        </p>
+
+        <h3>Conclusion</h3>
+        <p class="text-justify">
+            The breast cancer prediction dataset serves as a vital resource for advancing the capabilities of machine learning in oncology. By leveraging this data, researchers and clinicians can develop predictive models that contribute to early detection, enhanced diagnostic accuracy, and improved patient outcomes.
+        </p>
+
+
+        <!-- Model Training Results -->
+        <h2>Model Training Results</h2>
+        <p>Accuracy scores for various models trained on the dataset:</p>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Accuracy (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for model, score in scores %}
+                    <tr>
+                        <td>{{ model }}</td>
+                        <td>{{ score }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Best Model</h2>
+        <p><strong>{{ best_model_name }}</strong> with an accuracy of <strong>{{ best_model_score }}%</strong></p>
+
+        <h2>Best Model Evaluation Metrics</h2>
+        <ul>
+            <li>Accuracy: {{ best_model_metrics.accuracy }}</li>
+            <li>Precision: {{ best_model_metrics.precision }}</li>
+            <li>Recall: {{ best_model_metrics.recall }}</li>
+            <li>F1 Score: {{ best_model_metrics.f1 }}</li>
+            <li>ROC AUC: {{ best_model_metrics.roc_auc }}</li>
+            <li>Confusion Matrix: {{ best_model_metrics.conf_matrix | safe }}</li>
+        </ul>
+
+        <h2>Model Performance Metrics</h2>
+        <p>Summary of various performance metrics for each model:</p>
+        <div class="table-responsive">
+            <table class="table table-striped model-metrics-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Accuracy (%)</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>F1 Score</th>
+                        <th>ROC AUC</th>
+                        <th>Confusion Matrix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if metrics_summary %}
+                        {% for metrics in metrics_summary %}
+                        <tr>
+                            <td>{{ metrics.model }}</td>
+                            <td>{{ metrics.accuracy }}</td>
+                            <td>{{ metrics.precision }}</td>
+                            <td>{{ metrics.recall }}</td>
+                            <td>{{ metrics.f1_score }}</td>
+                            <td>{{ metrics.roc_auc }}</td>
+                            <td>{{ metrics.confusion_matrix | safe }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">No performance metrics available.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <p>This plot shows the performance comparison of the different models, helping to identify the best performing model.</p>
+
+        <!-- Prediction Visualization -->
+        <h2>Prediction Visualization</h2>
+        <p>This plot visualizes the predicted probabilities of the breast cancer classes.</p>
+        <img src="{{ url_for('static', filename='predicted_class_probability.png') }}" alt="Predicted Class Probability" class="img-fluid">
+
+        <!-- Data Visualizations -->
+        <h2>Data Visualizations</h2>
+
+        <!-- Correlation Heatmap -->
+        <h3>Correlation Heatmap</h3>
+        <p class="plot-description">This heatmap shows the correlations between various features.</p>
+        <img src="{{ url_for('static', filename='correlation_matrix.png') }}" alt="Correlation Heatmap" class="img-fluid">
+
+        <!-- Boxplot of Features -->
+        <h3>Boxplot of Features</h3>
+        <p class="plot-description">The boxplot visualizes the distribution and outliers of key features.</p>
+        <img src="{{ url_for('static', filename='boxplots.png') }}" alt="Boxplot of Features" class="img-fluid">
+
+        <!-- Histograms -->
+        <h3>Histograms of Features</h3>
+        <p class="plot-description">Histograms display the frequency distributions of the dataset's features.</p>
+        <img src="{{ url_for('static', filename='histograms.png') }}" alt="Feature Histograms" class="img-fluid">
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© Muhammad Arslan Qureshi. 2024 All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
